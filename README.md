@@ -31,13 +31,13 @@ where
   dry-run:    Run without consequences.
 ```
 
-On the other hand, one can pass CLI arguments using the function `install_projs_args` (the extra `--` is necesary ).
+On the other hand, one can pass CLI arguments using the function `install_projs_args` (the extra `--` is necessary ).
 
 ```console
 $ julia -e 'using PkgMassInstaller; install_projs_args()' -- --root="."
 ```
 
-It is usefull to define an alias
+It is useful to define an alias
 
 ```console
 $ alias jl_pkginstaller='julia -e "try; @eval(using PkgMassInstaller);catch err; @eval(import Pkg); Pkg.add(Pkg.PackageSpec(;url=\"https://github.com/josePereiro/PkgMassInstaller.jl\")); @eval(using PkgMassInstaller) end; install_projs_args()" --'
