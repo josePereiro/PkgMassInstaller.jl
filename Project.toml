@@ -1,7 +1,7 @@
 name = "PkgMassInstaller"
 uuid = "25937451-55af-4cf1-a681-2354f35bf0f3"
 authors = ["josePereiro <jose.pereiro.lab@gmail.com> and contributors"]
-version = "0.3.1"
+version = "0.3.2"
 
 [deps]
 ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
