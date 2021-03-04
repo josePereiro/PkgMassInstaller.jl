@@ -10,7 +10,9 @@ All the work is done in temporal enviroments, so the script have no effects on a
 It is usefull when you a have not full time internet access and wants to make sure all (and more) is install and build.
 
 # Installation
-```$ julia -e 'import Pkg; Pkg.add("https://github.com/josePereiro/PkgMassInstaller.jl")'```
+```console
+$ julia -e 'import Pkg; Pkg.add("https://github.com/josePereiro/PkgMassInstaller.jl")'
+```
 
 # Usage
 
@@ -18,12 +20,12 @@ NOTE: You must first add all required [Registries](https://julialang.github.io/P
 
 The function `install_projs` provide all functionalities.
 
-```bash
+```console
 $ julia -e 'using PkgMassInstaller; install_projs(#=root=# "root/path", #=deep=# 0, #=dry-run=# false)'
 ```
 
 where
-```
+```console
   root:       The root folder for searching projects. (default: ".")
   deep:       defines how many extra version of each pkg to install, from newer to older. 
   dry-run:    Run without consequences.
@@ -31,17 +33,17 @@ where
 
 On the other hand, one can pass CLI arguments using the function `install_projs_args` (the extra `--` is necesary ).
 
-```bash
+```console
 $ julia -e 'using PkgMassInstaller; install_projs_args()' -- --root="."
 ```
 
 It is usefull to define an alias
 
-```bash
+```console
 $ alias jl_pkginstaller='julia -e "try; @eval(using PkgMassInstaller);catch err; @eval(import Pkg); Pkg.add(Pkg.PackageSpec(;url=\"https://github.com/josePereiro/PkgMassInstaller.jl\")); @eval(using PkgMassInstaller) end; install_projs_args()" --'
 ```
 
-```bash
+```console
 $ jl_pkginstaller --help
 usage: <PROGRAM> [-d DEEP] [-r ROOT] [-y] [-h]
 
@@ -53,6 +55,5 @@ optional arguments:
   -y, --dry-run    Run without consequences.
   -h, --help       show this help message and exit
 ```
-NCheck the script folder for a script.jl version of  install_projs.
 
 
