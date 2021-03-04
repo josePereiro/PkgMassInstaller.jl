@@ -5,7 +5,7 @@ Export a function (`install_projs.jl`) that install julia packages from a set of
 It search projects within a given root folder and collect then (It will ignore .git folders). 
 After that, it will installs/activates/updates/build them. 
 Finally, it will install different versions of all explicit deps specified in all `Project.toml`s.
-All the work is done in temporal enviroments, so the script have no effects on any enviroment.
+All the work is done in temporal environments, so the script have no effects on any environments.
 
 It is usefull when you a have not full time internet access and wants to make sure all (and more) is installed and built.
 
