@@ -27,6 +27,6 @@ where
   dry-run:    Run without consequences.
 ```
 
-NCheck the script folder for a script.jl version of  install_projs.
+NOTE: Check the script folder for a script.jl version of  install_projs.
 
 
