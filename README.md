@@ -1,5 +1,5 @@
 # UtilsJL
-[![Build status](https://github.com/josePereiro/PkgMassInstaller/workflows/CI/badge.svg)](https://github.com/josePereiro/PkgMassInstaller/actions)
+[![Build status](https://github.com/josePereiro/PkgMassInstaller.jl/workflows/CI/badge.svg)](https://github.com/josePereiro/PkgMassInstaller.jl/actions)
 
 # PkgMassInstaller
 Contain a script (`script/install.jl`) that install julia packages from a set of `Project.toml` and/or `Manifest.toml`. 
