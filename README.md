@@ -1,4 +1,3 @@
-# UtilsJL
 [![Build status](https://github.com/josePereiro/PkgMassInstaller.jl/workflows/CI/badge.svg)](https://github.com/josePereiro/PkgMassInstaller.jl/actions)
 
 # PkgMassInstaller
