@@ -66,9 +66,14 @@ function extract_uuid(regpath)
     return dat["uuid"]
 end
 
-function create_temp_proj(proj_dir)
-    temp_proj_dir = tempdir()
+function tempenv() 
+    temp_proj_dir = joinpath(tempdir(), string(rand(UInt)))
     mkpath(temp_proj_dir)
+    return temp_proj_dir
+end
+
+function tempenv(proj_dir)
+    temp_proj_dir = tempenv()
     for file_names in [Base.project_names, Base.manifest_names]
         for file_name in file_names
             file = joinpath(file_name, proj_dir)
