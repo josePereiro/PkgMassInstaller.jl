@@ -7,7 +7,7 @@ After that, it will installs/activates/updates/build them.
 Finally, it will install different versions of all explicit deps specified in all `Project.toml`s.
 All the work is done in temporal enviroments, so the script have no effects on any enviroment.
 
-It is usefull when you a have not full time internet access and wants to make sure all (and more) is installed and build.
+It is usefull when you a have not full time internet access and wants to make sure all (and more) is installed and built.
 
 # Installation
 ```console
