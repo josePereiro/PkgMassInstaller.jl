@@ -1,7 +1,7 @@
 module PkgMassInstaller
 
-using Pkg
-using Pkg.TOML
+import Pkg
+import Pkg.TOML
 
 include("utils.jl")
 
