@@ -62,18 +62,18 @@ function install_projs(root, deep, dry_run = false)
         @info("Installing pkg versions", pkgs_count, deep)
         
         deep <= 0 && return
-        for (uuidpkg, name) in pkgs_pool
+        for (uuidpkg, pkgname) in pkgs_pool
             try
                 versions = VersionNumber[]
-                for path in findin_regs(name)
-                    uuidfile = extract_uuid(path)
+                for pkg_regpath in findin_regs(pkgname, uuidpkg)
+                    uuidfile = extract_uuid(pkg_regpath)
                     uuidpkg != uuidfile && continue
-                    push!(versions, extract_versions.(path)...)
+                    push!(versions, extract_versions.(pkg_regpath)...)
                 end
                 sort!(unique!(versions), rev = true)
 
                 println("\n" ^ 3, "-" ^ 45)
-                @info("Found in register", name, uuidpkg, length(versions))
+                @info("Found in register", pkgname, uuidpkg, length(versions))
                 
                 # Installing version range
                 c = 0
@@ -83,26 +83,26 @@ function install_projs(root, deep, dry_run = false)
                     c += 1
 
                     println("\n", "-" ^ 45)
-                    @info("Installing", name, uuidpkg, version)
+                    @info("Installing", pkgname, uuidpkg, version)
                     
                     if !dry_run
                         proj_dir = tempenv()
                         mkpath(proj_dir)
                         try
                             Pkg.activate(proj_dir)
-                            pkg = Pkg.Types.PackageSpec(name, Base.UUID(uuidpkg), version)
+                            pkg = Pkg.Types.PackageSpec(pkgname, Base.UUID(uuidpkg), version)
                             Pkg.add(pkg)
                             Pkg.build()
 
                         catch err
-                            @warn("ERROR", name, uuidpkg, version, err)
+                            @warn("ERROR", pkgname, uuidpkg, version, err)
                         finally
                             rm(proj_dir; force = true, recursive = true)
                         end
                     end
                 end
             catch err
-                @warn("ERROR", name, uuidpkg, err)
+                @warn("ERROR", pkgname, uuidpkg, err)
             end
         end
     end

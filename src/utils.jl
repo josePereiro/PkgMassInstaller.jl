@@ -41,15 +41,25 @@ function find_projects(root = ".")
     projs
 end
 
-reg_dir() = joinpath(first(DEPOT_PATH),"registries")
-
-function findin_regs(name::String, reg_root = reg_dir())
+# Find package in registers
+function findin_regs(name, uuidpkg)
     firstletter = string(first(name))
     founds = []
-    for dir in readdir(reg_root)
-        reg_dir = joinpath(reg_root, dir, firstletter, name)
-        !isdir(reg_dir) && continue
-        push!(founds, reg_dir)
+    for depot in DEPOT_PATH
+        regs_root = joinpath(depot, "registries")
+        !isdir(regs_root) && continue
+        for reg in readdir(regs_root)
+            reg_pkgdir = joinpath(regs_root, reg, firstletter, name)
+            !isdir(reg_pkgdir) && continue
+
+            # Check uuid
+            pkg_toml = joinpath(reg_pkgdir, "Package.toml")
+            !isfile(pkg_toml) && continue
+            uuidfile = get(TOML.parsefile(pkg_toml), "uuid", "NOT_A_UUID")
+            uuidfile != uuidpkg && continue
+
+            push!(founds, reg_pkgdir)
+        end
     end
     founds
 end
