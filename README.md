@@ -1,3 +1,6 @@
+# UtilsJL
+[![Build status](https://github.com/josePereiro/PkgMassInstaller/workflows/CI/badge.svg)](https://github.com/josePereiro/PkgMassInstaller/actions)
+
 # PkgMassInstaller
 Contain a script (`script/install.jl`) that install julia packages from a set of `Project.toml` and/or `Manifest.toml`. 
 It search projects within a given root folder
