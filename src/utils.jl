@@ -1,5 +1,5 @@
 # Tools
-function load_deps(proj_file)
+function extract_pkgdeps(proj_file)
     raw_deps = get(TOML.parsefile(proj_file), "deps", Dict())
     deps = Dict()
     for (name, uuid) in raw_deps
@@ -64,13 +64,14 @@ function findin_regs(name, uuidpkg)
     founds
 end
 
-function extract_versions(regpath)
-    ctx = Pkg.Types.Context()
-    di=Pkg.Operations.load_versions(ctx, regpath)
-    keys(di) |> collect
+# Extract existing versions from register
+function extract_reg_pkgversions(regpath)
+    ver_file = joinpath(regpath, "Versions.toml")
+    versions = TOML.parsefile(ver_file)
+    versions |> keys .|> VersionNumber
 end
 
-function extract_uuid(regpath)
+function extract_reg_pkguuid(regpath)
     pkg_file = joinpath(regpath, "Package.toml")
     dat = TOML.parsefile(pkg_file)
     return dat["uuid"]

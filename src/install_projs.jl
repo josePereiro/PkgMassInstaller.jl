@@ -23,7 +23,7 @@ function install_projs(root, deep, dry_run = false)
                 proj_file = joinpath(root, proj_file)
 
                 # Collect devs
-                pkgs = load_deps(proj_file)
+                pkgs = extract_pkgdeps(proj_file)
                 merge!(pkgs_pool, pkgs)
 
                 # Installing
@@ -66,9 +66,9 @@ function install_projs(root, deep, dry_run = false)
             try
                 versions = VersionNumber[]
                 for pkg_regpath in findin_regs(pkgname, uuidpkg)
-                    uuidfile = extract_uuid(pkg_regpath)
+                    uuidfile = extract_reg_pkguuid(pkg_regpath)
                     uuidpkg != uuidfile && continue
-                    push!(versions, extract_versions.(pkg_regpath)...)
+                    push!(versions, extract_reg_pkgversions.(pkg_regpath)...)
                 end
                 sort!(unique!(versions), rev = true)
 
