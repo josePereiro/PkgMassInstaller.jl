@@ -11,7 +11,7 @@ It is usefull when you a have not full time internet access and wants to make su
 
 # Installation
 ```console
-$ julia -e 'import Pkg; Pkg.add("https://github.com/josePereiro/PkgMassInstaller.jl")'
+$ julia -e 'import Pkg; Pkg.add(Pkg.PackageSpec(;url=\"https://github.com/josePereiro/PkgMassInstaller.jl\"))'
 ```
 
 # Usage
