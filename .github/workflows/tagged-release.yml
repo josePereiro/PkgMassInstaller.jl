@@ -22,5 +22,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
+            LICENSE
             LICENSE.txt
             *.jar
